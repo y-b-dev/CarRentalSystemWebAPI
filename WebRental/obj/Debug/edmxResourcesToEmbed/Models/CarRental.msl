@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CarRentalModelStoreContainer" CdmEntityContainer="CarRentalEntities">
+    <FunctionImportMapping FunctionImportName="spAuthUser" FunctionName="CarRentalModel.Store.spAuthUser" />
+    <FunctionImportMapping FunctionImportName="spGetBranches" FunctionName="CarRentalModel.Store.spGetBranches">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spGetBranches_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetCarByID" FunctionName="CarRentalModel.Store.spGetCarByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spGetCarByID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CarID" ColumnName="CarID" />
+          <ScalarProperty Name="CarTypeID" ColumnName="CarTypeID" />
+          <ScalarProperty Name="KM" ColumnName="KM" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="IsDriveable" ColumnName="IsDriveable" />
+          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetCars" FunctionName="CarRentalModel.Store.spGetCars">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spGetCars_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CarID" ColumnName="CarID" />
+          <ScalarProperty Name="CarTypeID" ColumnName="CarTypeID" />
+          <ScalarProperty Name="KM" ColumnName="KM" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="IsDriveable" ColumnName="IsDriveable" />
+          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetCarTypes" FunctionName="CarRentalModel.Store.spGetCarTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spGetCarTypes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Manufactor" ColumnName="Manufactor" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="DailyPrice" ColumnName="DailyPrice" />
+          <ScalarProperty Name="LatePrice" ColumnName="LatePrice" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Gear" ColumnName="Gear" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetEmployees" FunctionName="CarRentalModel.Store.spGetEmployees">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spGetEmployees_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IsManager" ColumnName="IsManager" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetEmployeeWithUserByID" FunctionName="CarRentalModel.Store.spGetEmployeeWithUserByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spGetEmployeeWithUserByID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="IsManager" ColumnName="IsManager" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetRents" FunctionName="CarRentalModel.Store.spGetRents">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spGetRents_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ActualEndDate" ColumnName="ActualEndDate" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CarID" ColumnName="CarID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetRentsByUserID" FunctionName="CarRentalModel.Store.spGetRentsByUserID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spGetRentsByUserID_Result">
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ActualEndDate" ColumnName="ActualEndDate" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CarID" ColumnName="CarID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetUserByID" FunctionName="CarRentalModel.Store.spGetUserByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spGetUserByID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetUsers" FunctionName="CarRentalModel.Store.spGetUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spGetUsers_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spReturnCar" FunctionName="CarRentalModel.Store.spReturnCar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spReturnCar_Result">
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="DailyPrice" ColumnName="DailyPrice" />
+          <ScalarProperty Name="LatePrice" ColumnName="LatePrice" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetCarWithTypeByID" FunctionName="CarRentalModel.Store.spGetCarWithTypeByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spGetCarWithTypeByID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="KM" ColumnName="KM" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="DailyPrice" ColumnName="DailyPrice" />
+          <ScalarProperty Name="LatePrice" ColumnName="LatePrice" />
+          <ScalarProperty Name="Gear" ColumnName="Gear" />
+          <ScalarProperty Name="Manufactor" ColumnName="Manufactor" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetUsersAndEmloyeesForManager" FunctionName="CarRentalModel.Store.spGetUsersAndEmloyeesForManager">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarRentalModel.spGetUsersAndEmloyeesForManager_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="CarRentalModel.Branch">
+        <MappingFragment StoreEntitySet="Branches">
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="CarRentalModel.Car">
+        <MappingFragment StoreEntitySet="Cars">
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+          <ScalarProperty Name="IsDriveable" ColumnName="IsDriveable" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="KM" ColumnName="KM" />
+          <ScalarProperty Name="CarTypeID" ColumnName="CarTypeID" />
+          <ScalarProperty Name="CarID" ColumnName="CarID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="CarRentalModel.Car">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="CarRentalModel.Store.spAddCar">
+            <ScalarProperty Name="BranchID" ParameterName="BranchID" />
+            <ScalarProperty Name="IsAvailable" ParameterName="IsAvailable" />
+            <ScalarProperty Name="IsDriveable" ParameterName="IsDriveable" />
+            <ScalarProperty Name="Image" ParameterName="Image" />
+            <ScalarProperty Name="KM" ParameterName="KM" />
+            <ScalarProperty Name="CarTypeID" ParameterName="CarTypeID" />
+            <ScalarProperty Name="CarID" ParameterName="CarID" />
+            <ResultBinding Name="ID" ColumnName="NewID" />
+          </InsertFunction>
+          <DeleteFunction FunctionName="CarRentalModel.Store.spDeleteCar">
+            <ScalarProperty Name="ID" ParameterName="ID" />
+          </DeleteFunction>
+          <UpdateFunction FunctionName="CarRentalModel.Store.spEditCar">
+            <ScalarProperty Name="BranchID" ParameterName="BranchID" Version="Current" />
+            <ScalarProperty Name="IsAvailable" ParameterName="IsAvailable" Version="Current" />
+            <ScalarProperty Name="IsDriveable" ParameterName="IsDriveable" Version="Current" />
+            <ScalarProperty Name="Image" ParameterName="Image" Version="Current" />
+            <ScalarProperty Name="KM" ParameterName="KM" Version="Current" />
+            <ScalarProperty Name="CarTypeID" ParameterName="CarTypeID" Version="Current" />
+            <ScalarProperty Name="CarID" ParameterName="CarID" Version="Current" />
+            <ScalarProperty Name="ID" ParameterName="ID" Version="Current" />
+          </UpdateFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarTypes">
+      <EntityTypeMapping TypeName="CarRentalModel.CarType">
+        <MappingFragment StoreEntitySet="CarType">
+          <ScalarProperty Name="Gear" ColumnName="Gear" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="LatePrice" ColumnName="LatePrice" />
+          <ScalarProperty Name="DailyPrice" ColumnName="DailyPrice" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Manufactor" ColumnName="Manufactor" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="CarRentalModel.CarType">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="CarRentalModel.Store.spAddCarType">
+            <ScalarProperty Name="Gear" ParameterName="Gear" />
+            <ScalarProperty Name="Year" ParameterName="Year" />
+            <ScalarProperty Name="LatePrice" ParameterName="LatePrice" />
+            <ScalarProperty Name="DailyPrice" ParameterName="DailyPrice" />
+            <ScalarProperty Name="Model" ParameterName="Model" />
+            <ScalarProperty Name="Manufactor" ParameterName="Manufactor" />
+            <ResultBinding Name="ID" ColumnName="NewID" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="CarRentalModel.Store.spEditCarType">
+            <ScalarProperty Name="Gear" ParameterName="Gear" Version="Current" />
+            <ScalarProperty Name="Year" ParameterName="Year" Version="Current" />
+            <ScalarProperty Name="LatePrice" ParameterName="LatePrice" Version="Current" />
+            <ScalarProperty Name="DailyPrice" ParameterName="DailyPrice" Version="Current" />
+            <ScalarProperty Name="Model" ParameterName="Model" Version="Current" />
+            <ScalarProperty Name="Manufactor" ParameterName="Manufactor" Version="Current" />
+            <ScalarProperty Name="ID" ParameterName="ID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="CarRentalModel.Store.spDeleteCarType">
+            <ScalarProperty Name="ID" ParameterName="ID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="CarRentalModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="IsManager" ColumnName="IsManager" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RentDetails">
+      <EntityTypeMapping TypeName="CarRentalModel.RentDetail">
+        <MappingFragment StoreEntitySet="RentDetails">
+          <ScalarProperty Name="CarID" ColumnName="CarID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="ActualEndDate" ColumnName="ActualEndDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="CarRentalModel.RentDetail">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="CarRentalModel.Store.spAddRent">
+            <ScalarProperty Name="CarID" ParameterName="CarID" />
+            <ScalarProperty Name="UserID" ParameterName="UserID" />
+            <ScalarProperty Name="BranchID" ParameterName="BranchID" />
+            <ScalarProperty Name="ActualEndDate" ParameterName="ActualEndDate" />
+            <ScalarProperty Name="EndDate" ParameterName="EndDate" />
+            <ScalarProperty Name="StartDate" ParameterName="StartDate" />
+            <ResultBinding Name="ID" ColumnName="NewID" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="CarRentalModel.Store.spEditRent">
+            <ScalarProperty Name="CarID" ParameterName="CarID" Version="Current" />
+            <ScalarProperty Name="UserID" ParameterName="UserID" Version="Current" />
+            <ScalarProperty Name="BranchID" ParameterName="BranchID" Version="Current" />
+            <ScalarProperty Name="ActualEndDate" ParameterName="ActualEndDate" Version="Current" />
+            <ScalarProperty Name="EndDate" ParameterName="EndDate" Version="Current" />
+            <ScalarProperty Name="StartDate" ParameterName="StartDate" Version="Current" />
+            <ScalarProperty Name="ID" ParameterName="ID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="CarRentalModel.Store.spDeleteRent">
+            <ScalarProperty Name="ID" ParameterName="ID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="CarRentalModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="CarRentalModel.User">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="CarRentalModel.Store.spAddUser">
+            <ScalarProperty Name="Image" ParameterName="Image" />
+            <ScalarProperty Name="Password" ParameterName="Password" />
+            <ScalarProperty Name="Email" ParameterName="Email" />
+            <ScalarProperty Name="Gender" ParameterName="Gender" />
+            <ScalarProperty Name="BirthDate" ParameterName="BirthDate" />
+            <ScalarProperty Name="UserName" ParameterName="UserName" />
+            <ScalarProperty Name="LastName" ParameterName="LastName" />
+            <ScalarProperty Name="FirstName" ParameterName="FirstName" />
+            <ScalarProperty Name="UserID" ParameterName="UserID" />
+            <ResultBinding Name="ID" ColumnName="NewID" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="CarRentalModel.Store.spEditUser">
+            <ScalarProperty Name="Image" ParameterName="Image" Version="Current" />
+            <ScalarProperty Name="Password" ParameterName="Password" Version="Current" />
+            <ScalarProperty Name="Email" ParameterName="Email" Version="Current" />
+            <ScalarProperty Name="Gender" ParameterName="Gender" Version="Current" />
+            <ScalarProperty Name="BirthDate" ParameterName="BirthDate" Version="Current" />
+            <ScalarProperty Name="UserName" ParameterName="UserName" Version="Current" />
+            <ScalarProperty Name="LastName" ParameterName="LastName" Version="Current" />
+            <ScalarProperty Name="FirstName" ParameterName="FirstName" Version="Current" />
+            <ScalarProperty Name="UserID" ParameterName="UserID" Version="Current" />
+            <ScalarProperty Name="ID" ParameterName="ID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="CarRentalModel.Store.spDeleteUser">
+            <ScalarProperty Name="ID" ParameterName="ID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

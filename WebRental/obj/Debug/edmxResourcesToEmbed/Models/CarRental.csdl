@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarRentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CarRentalEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="spAuthUser">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="ResultID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetBranches" ReturnType="Collection(CarRentalModel.spGetBranches_Result)" />
+    <FunctionImport Name="spGetCarByID" ReturnType="Collection(CarRentalModel.spGetCarByID_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetCars" ReturnType="Collection(CarRentalModel.spGetCars_Result)" />
+    <FunctionImport Name="spGetCarTypes" ReturnType="Collection(CarRentalModel.spGetCarTypes_Result)" />
+    <FunctionImport Name="spGetEmployees" ReturnType="Collection(CarRentalModel.spGetEmployees_Result)" />
+    <FunctionImport Name="spGetEmployeeWithUserByID" ReturnType="Collection(CarRentalModel.spGetEmployeeWithUserByID_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetRents" ReturnType="Collection(CarRentalModel.spGetRents_Result)" />
+    <FunctionImport Name="spGetRentsByUserID" ReturnType="Collection(CarRentalModel.spGetRentsByUserID_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetUserByID" ReturnType="Collection(CarRentalModel.spGetUserByID_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetUsers" ReturnType="Collection(CarRentalModel.spGetUsers_Result)" />
+    <FunctionImport Name="spReturnCar" ReturnType="Collection(CarRentalModel.spReturnCar_Result)">
+      <Parameter Name="CarID" Mode="In" Type="Int32" />
+      <Parameter Name="CarTableID" Mode="InOut" Type="Int32" />
+      <Parameter Name="RentID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetCarWithTypeByID" ReturnType="Collection(CarRentalModel.spGetCarWithTypeByID_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetUsersAndEmloyeesForManager" ReturnType="Collection(CarRentalModel.spGetUsersAndEmloyeesForManager_Result)">
+      <Parameter Name="BranchID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Branches" EntityType="CarRentalModel.Branch" />
+    <EntitySet Name="Cars" EntityType="CarRentalModel.Car" />
+    <EntitySet Name="CarTypes" EntityType="CarRentalModel.CarType" />
+    <EntitySet Name="Employees" EntityType="CarRentalModel.Employee" />
+    <EntitySet Name="RentDetails" EntityType="CarRentalModel.RentDetail" />
+    <EntitySet Name="Users" EntityType="CarRentalModel.User" />
+    <AssociationSet Name="FK_Employees_Branches" Association="CarRentalModel.FK_Employees_Branches">
+      <End Role="Branch" EntitySet="Branches" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RentDetails_Branch" Association="CarRentalModel.FK_RentDetails_Branch">
+      <End Role="Branch" EntitySet="Branches" />
+      <End Role="RentDetail" EntitySet="RentDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Car_CarType" Association="CarRentalModel.FK_Car_CarType">
+      <End Role="CarType" EntitySet="CarTypes" />
+      <End Role="Car" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RentDetails_Cars" Association="CarRentalModel.FK_RentDetails_Cars">
+      <End Role="Car" EntitySet="Cars" />
+      <End Role="RentDetail" EntitySet="RentDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_User" Association="CarRentalModel.FK_Employee_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RentDetails_Users" Association="CarRentalModel.FK_RentDetails_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="RentDetail" EntitySet="RentDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="spGetBranches_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Lat" Nullable="false" Precision="9" Scale="6" />
+    <Property Type="Decimal" Name="Lng" Nullable="false" Precision="9" Scale="6" />
+  </ComplexType>
+  <ComplexType Name="spGetCarByID_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="CarID" Nullable="false" />
+    <Property Type="Int32" Name="CarTypeID" Nullable="false" />
+    <Property Type="Double" Name="KM" Nullable="false" />
+    <Property Type="String" Name="Image" Nullable="false" MaxLength="500" />
+    <Property Type="Boolean" Name="IsDriveable" Nullable="false" />
+    <Property Type="Boolean" Name="IsAvailable" Nullable="false" />
+    <Property Type="Int32" Name="BranchID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetCars_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="CarID" Nullable="false" />
+    <Property Type="Int32" Name="CarTypeID" Nullable="false" />
+    <Property Type="Double" Name="KM" Nullable="false" />
+    <Property Type="String" Name="Image" Nullable="false" MaxLength="500" />
+    <Property Type="Boolean" Name="IsDriveable" Nullable="false" />
+    <Property Type="Boolean" Name="IsAvailable" Nullable="false" />
+    <Property Type="Int32" Name="BranchID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetEmployees_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Boolean" Name="IsManager" Nullable="false" />
+    <Property Type="Int32" Name="BranchID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetEmployeeWithUserByID_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="UserID" Nullable="false" MaxLength="9" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="Byte" Name="Gender" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Image" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="IsManager" Nullable="false" />
+    <Property Type="Int32" Name="BranchID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetRents_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" />
+    <Property Type="DateTime" Name="EndDate" Nullable="false" />
+    <Property Type="DateTime" Name="ActualEndDate" Nullable="true" />
+    <Property Type="Int32" Name="BranchID" Nullable="false" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Int32" Name="CarID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetRentsByUserID_Result">
+    <Property Type="DateTime" Name="StartDate" Nullable="false" />
+    <Property Type="DateTime" Name="EndDate" Nullable="false" />
+    <Property Type="DateTime" Name="ActualEndDate" Nullable="true" />
+    <Property Type="Int32" Name="BranchID" Nullable="false" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Int32" Name="CarID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetUserByID_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="UserID" Nullable="false" MaxLength="9" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="Byte" Name="Gender" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Image" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="spGetUsers_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="UserID" Nullable="false" MaxLength="9" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="Byte" Name="Gender" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Image" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="spReturnCar_Result">
+    <Property Type="DateTime" Name="StartDate" Nullable="true" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" />
+    <Property Type="Decimal" Name="DailyPrice" Nullable="true" Precision="10" />
+    <Property Type="Decimal" Name="LatePrice" Nullable="true" Precision="10" />
+  </ComplexType>
+  <ComplexType Name="spGetCarWithTypeByID_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Image" Nullable="false" MaxLength="500" />
+    <Property Type="Double" Name="KM" Nullable="false" />
+    <Property Type="Int32" Name="BranchID" Nullable="false" />
+    <Property Type="Decimal" Name="DailyPrice" Nullable="false" Precision="10" />
+    <Property Type="Decimal" Name="LatePrice" Nullable="false" Precision="10" />
+    <Property Type="Byte" Name="Gear" Nullable="false" />
+    <Property Type="String" Name="Manufactor" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Model" Nullable="false" MaxLength="20" />
+    <Property Type="Int16" Name="Year" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetCarTypes_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Manufactor" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Model" Nullable="false" MaxLength="20" />
+    <Property Type="Decimal" Name="DailyPrice" Nullable="false" Precision="10" />
+    <Property Type="Decimal" Name="LatePrice" Nullable="false" Precision="10" />
+    <Property Type="Int16" Name="Year" Nullable="false" />
+    <Property Type="Byte" Name="Gear" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetUsersAndEmloyeesForManager_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="UserID" Nullable="false" MaxLength="9" />
+    <Property Type="Int32" Name="BranchID" Nullable="true" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" />
+    <Property Type="Byte" Name="Gender" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Image" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Lat" Type="Decimal" Nullable="false" Precision="9" Scale="6" />
+    <Property Name="Lng" Type="Decimal" Nullable="false" Precision="9" Scale="6" />
+    <NavigationProperty Name="Employees" Relationship="CarRentalModel.FK_Employees_Branches" FromRole="Branch" ToRole="Employee" />
+    <NavigationProperty Name="RentDetails" Relationship="CarRentalModel.FK_RentDetails_Branch" FromRole="Branch" ToRole="RentDetail" />
+  </EntityType>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarID" Type="Int32" Nullable="false" />
+    <Property Name="CarTypeID" Type="Int32" />
+    <Property Name="KM" Type="Double" Nullable="false" />
+    <Property Name="Image" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsDriveable" Type="Boolean" Nullable="false" />
+    <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
+    <Property Name="BranchID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CarType" Relationship="CarRentalModel.FK_Car_CarType" FromRole="Car" ToRole="CarType" />
+    <NavigationProperty Name="RentDetails" Relationship="CarRentalModel.FK_RentDetails_Cars" FromRole="Car" ToRole="RentDetail" />
+  </EntityType>
+  <EntityType Name="CarType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Manufactor" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Model" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DailyPrice" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+    <Property Name="LatePrice" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+    <Property Name="Year" Type="Int16" Nullable="false" />
+    <Property Name="Gear" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Cars" Relationship="CarRentalModel.FK_Car_CarType" FromRole="CarType" ToRole="Car" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="IsManager" Type="Boolean" Nullable="false" />
+    <Property Name="BranchID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Branch" Relationship="CarRentalModel.FK_Employees_Branches" FromRole="Employee" ToRole="Branch" />
+    <NavigationProperty Name="User" Relationship="CarRentalModel.FK_Employee_User" FromRole="Employee" ToRole="User" />
+  </EntityType>
+  <EntityType Name="RentDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ActualEndDate" Type="DateTime" Precision="0" />
+    <Property Name="BranchID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="CarID" Type="Int32" />
+    <NavigationProperty Name="Branch" Relationship="CarRentalModel.FK_RentDetails_Branch" FromRole="RentDetail" ToRole="Branch" />
+    <NavigationProperty Name="Car" Relationship="CarRentalModel.FK_RentDetails_Cars" FromRole="RentDetail" ToRole="Car" />
+    <NavigationProperty Name="User" Relationship="CarRentalModel.FK_RentDetails_Users" FromRole="RentDetail" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="Byte" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employee" Relationship="CarRentalModel.FK_Employee_User" FromRole="User" ToRole="Employee" />
+    <NavigationProperty Name="RentDetails" Relationship="CarRentalModel.FK_RentDetails_Users" FromRole="User" ToRole="RentDetail" />
+  </EntityType>
+  <Association Name="FK_Employees_Branches">
+    <End Type="CarRentalModel.Branch" Role="Branch" Multiplicity="1" />
+    <End Type="CarRentalModel.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RentDetails_Branch">
+    <End Type="CarRentalModel.Branch" Role="Branch" Multiplicity="1" />
+    <End Type="CarRentalModel.RentDetail" Role="RentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RentDetail">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Car_CarType">
+    <End Type="CarRentalModel.CarType" Role="CarType" Multiplicity="0..1" />
+    <End Type="CarRentalModel.Car" Role="Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="CarTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RentDetails_Cars">
+    <End Type="CarRentalModel.Car" Role="Car" Multiplicity="0..1" />
+    <End Type="CarRentalModel.RentDetail" Role="RentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RentDetail">
+        <PropertyRef Name="CarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_User">
+    <End Type="CarRentalModel.User" Role="User" Multiplicity="1" />
+    <End Type="CarRentalModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RentDetails_Users">
+    <End Type="CarRentalModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="CarRentalModel.RentDetail" Role="RentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RentDetail">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
